@@ -5,5 +5,6 @@ public class Main {
     System.out.println("This is Mazen");
     System.out.println("This is Mazen again :)");
     System.out.println("This is Yousef");
+    System.out.println("This is Yousef again :)");
   }
 }
