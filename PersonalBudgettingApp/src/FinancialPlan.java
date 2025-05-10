@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class FinancialPlan implements Subject {
-    List<Observer> observers;
-    int id;
-    String title;
-    int totalAmount;
-    int paidAmount;
-    boolean isRecurring;
-    LocalDate dueDate;
-    Period period;
+    private List<Observer> observers;
+    private final int id;
+    private String title;
+    private int totalAmount;
+    private int paidAmount;
+    private boolean isRecurring;
+    private LocalDate dueDate;
+    private Period period;
 
     public FinancialPlan(int id, String title, int totalAmount, LocalDate dueDate, Period period) {
         this.id = id;
