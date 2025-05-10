@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.util.List;
 
-public class FinancialPlan {
+public class FinancialPlan implements Subject {
     List<Observer> observers;
     int id;
     String title;
