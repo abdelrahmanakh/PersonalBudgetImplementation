@@ -25,19 +25,21 @@ public class FinancialPlan {
     public void addObserver(Observer o) {
         observers.add(o);
     }
+
     public void removeObserver(Observer o) {
         observers.remove(o);
     }
+
     public void notifyObservers() {
         for (Observer o : observers) {
-            o.update();
+            o.update(this);
         }
     }
 
     //Method to see if the dueDate is soon
-    public boolean isDueDateSoon(){
+    public boolean isDueDateSoon() {
         LocalDate now = LocalDate.now();
-        Period p = Period.between(dueDate, now);
+        Period p = Period.between(now, dueDate);
         return p.getYears() == 0 && p.getMonths() == 0 && p.getDays() <= 7;
     }
 
@@ -50,6 +52,7 @@ public class FinancialPlan {
     public String getTitle() {
         return title;
     }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -58,6 +61,7 @@ public class FinancialPlan {
     public int getTotalAmount() {
         return totalAmount;
     }
+
     public void setTotalAmount(int totalAmount) {
         this.totalAmount = totalAmount;
     }
@@ -66,6 +70,7 @@ public class FinancialPlan {
     public int getPaidAmount() {
         return paidAmount;
     }
+
     public void setPaidAmount(int paidAmount) {
         this.paidAmount = paidAmount;
     }
@@ -74,6 +79,7 @@ public class FinancialPlan {
     public boolean isRecurring() {
         return isRecurring;
     }
+
     public void setRecurring(boolean recurring) {
         isRecurring = recurring;
     }
@@ -82,6 +88,7 @@ public class FinancialPlan {
     public LocalDate getDueDate() {
         return dueDate;
     }
+
     public void setDueDate(LocalDate dueDate) {
         this.dueDate = dueDate;
     }
@@ -90,6 +97,7 @@ public class FinancialPlan {
     public Period getPeriod() {
         return period;
     }
+
     public void setPeriod(Period period) {
         this.period = period;
     }
