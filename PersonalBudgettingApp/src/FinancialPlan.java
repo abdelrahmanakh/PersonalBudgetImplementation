@@ -32,7 +32,8 @@ public class FinancialPlan {
 
     public void notifyObservers() {
         for (Observer o : observers) {
-            o.update(this);
+            if (isDueDateSoon())
+                o.update();
         }
     }
 
