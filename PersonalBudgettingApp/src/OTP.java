@@ -13,6 +13,7 @@ public class OTP {
     }
 
     boolean validateOTP(String otpL) {
+        System.out.print("Enter the OTP sent to your phone number without any white spaces between digits: ");
         if (!Objects.equals(otpL, code)) {
             System.out.println("Invalid OTP");
             return false;
