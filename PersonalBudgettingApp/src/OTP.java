@@ -13,6 +13,10 @@ public class OTP {
     }
 
     boolean validateOTP(String otpL) {
-        return Objects.equals(otpL, code);
+        if (!Objects.equals(otpL, code)) {
+            System.out.println("Invalid OTP");
+            return false;
+        }
+        return true;
     }
 }

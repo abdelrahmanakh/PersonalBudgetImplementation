@@ -10,12 +10,16 @@ public class SignUpRequest {
     }
 
     boolean isValidRequest() {
-        if (!validateUser.isValidUsername(username))
+        if (!validateUser.isValidUsername(username)) {
+            System.out.println("Username is already taken");
             return false;
+        }
         if (!validateUser.isValidEmail(email))
             return false;
-        if (!validateUser.isValidPassword(password))
+        if (!validateUser.isValidPassword(password)) {
+            System.out.println("Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one digit, and one special character");
             return false;
+        }
         return validateUser.isValidPhoneNumber(phoneNumber);
     }
 }

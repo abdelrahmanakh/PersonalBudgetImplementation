@@ -8,13 +8,19 @@ public class ValidateUser {
         String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
         Pattern emailPattern = Pattern.compile(emailRegex);
         Matcher matcher = emailPattern.matcher(email);
-        if (!matcher.matches())
+        if (!matcher.matches()) {
+            System.out.println("Invalid email format");
             return false;
-        return Main.userController.isRegisteredUsername(email);
+        }
+        if (!Main.userController.isRegisteredUsername(email)) {
+            System.out.println("Email is already registered");
+            return false;
+        }
+        return true;
     }
 
     boolean isValidPhoneNumber(String phoneNumber) {
-        if(!Main.userController.isRegisteredPhoneNumber(phoneNumber))
+        if (!Main.userController.isRegisteredPhoneNumber(phoneNumber))
             return false;
         otp.generate();
         String code = "";
