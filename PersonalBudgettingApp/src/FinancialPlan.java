@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FinancialPlan implements Subject {
     private List<Observer> observers;
-    private final int id;
+    private int id;
     private String title;
     private int totalAmount;
     private int paidAmount;

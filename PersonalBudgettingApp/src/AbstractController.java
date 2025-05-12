@@ -4,8 +4,8 @@ import java.util.List;
 public abstract class AbstractController<T> {
     private List<T> entities;
 
-    public AbstractController() {
-        this.entities = new ArrayList<>();
+    public AbstractController(List<T> entities) {
+        this.entities = entities;
     }
     public void addEntity(T entity) {
         this.entities.add(entity);
@@ -16,5 +16,5 @@ public abstract class AbstractController<T> {
     public List<T> getEntities() {
         return entities;
     }
-    public abstract void displayEntity(int id);
+    public abstract void displayEntity(T entity);
 }
