@@ -8,6 +8,5 @@ public interface Observer {
      * This method is called when the subject's state changes.
      * It is used to update the observer with the latest information.
      */
-    void update();
     void update(String title);
 }

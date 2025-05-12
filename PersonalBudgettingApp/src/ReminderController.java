@@ -28,11 +28,6 @@ public class ReminderController implements Observer {
 
 
     @Override
-    public void update() {
-
-    }
-
-    @Override
     public void update(String title) {
         sendReminder(new Reminder(title));
     }
