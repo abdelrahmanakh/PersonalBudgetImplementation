@@ -5,7 +5,8 @@ public class User {
     int UserID, failedAttempts;
     boolean isLocked;
     String email, phoneNumber, username, password;
-    protected List<Income> incomeSources;
+    private final List<Income> incomeSources;
+    private final List<Budget> budgets;
     User(SignUpRequest request, int ID) {
         username = request.username;
         email = request.email;
@@ -15,5 +16,21 @@ public class User {
         UserID = ID;
         isLocked = false;
         this.incomeSources = new ArrayList<>();
+        this.budgets = new ArrayList<>();
     }
+
+    /**
+     * @return the list of income sources associated with the user
+     */
+    public List<Income> getIncomeSources() {
+        return incomeSources;
+    }
+
+    /**
+     * @return the list of budgets associated with the user
+     */
+    public List<Budget> getBudgets() {
+        return budgets;
+    }
+
 }
