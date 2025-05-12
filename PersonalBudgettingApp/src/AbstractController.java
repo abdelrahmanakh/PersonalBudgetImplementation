@@ -47,4 +47,10 @@ public abstract class AbstractController<T> {
      * @param entity The entity to be displayed.
      */
     public abstract void displayEntity(T entity);
+
+    /**
+     * Abstract method to display all entities of the controller
+     * This method must be implemented by subclasses to define how an entity is displayed.
+     */
+    public abstract void displayAllEntities();
 }

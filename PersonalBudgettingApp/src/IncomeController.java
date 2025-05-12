@@ -30,4 +30,11 @@ public class IncomeController extends AbstractController<Income> {
             }
         }
     }
+
+    @Override
+    public void displayAllEntities() {
+        for (Income Income:getEntities()) {
+            view.displayIncome(Income);
+        }
+    }
 }
