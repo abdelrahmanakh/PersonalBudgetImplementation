@@ -9,4 +9,5 @@ public interface Observer {
      * It is used to update the observer with the latest information.
      */
     void update();
+    void update(String title);
 }
