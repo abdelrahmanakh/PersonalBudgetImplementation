@@ -31,6 +31,7 @@ public class FinancialPlan implements Subject {
         this.paidAmount = 0;
         this.dueDate = dueDate;
         this.period =period;
+        this.isRecurring = true;
     }
 
     // === Subject Interface Methods ===
