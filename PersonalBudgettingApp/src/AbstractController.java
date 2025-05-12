@@ -28,10 +28,10 @@ public abstract class AbstractController<T> {
 
     /**
      * Removes an entity from the list of entities.
-     * @param entity The entity to be removed.
+     * @param id The entity to be removed.
      */
-    public void removeEntity(T entity) {
-        this.entities.remove(entity);
+    public void removeEntity(int id) {
+        this.entities.remove(id);
     }
 
     /**
