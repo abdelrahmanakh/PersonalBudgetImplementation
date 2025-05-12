@@ -31,4 +31,14 @@ public class BudgetController extends AbstractController<Budget> {
             }
         }
     }
+
+    /**
+     * Displays all Budget entities managed by the controller.
+     */
+    @Override
+    public void displayAllEntities() {
+        for (Budget Budget:getEntities()) {
+            view.displayBudget(Budget);
+        }
+    }
 }
