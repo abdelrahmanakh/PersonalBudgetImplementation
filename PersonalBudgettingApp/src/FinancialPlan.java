@@ -58,7 +58,7 @@ public class FinancialPlan implements Subject {
     public void notifyObservers() {
         for (Observer o : observers) {
             if (isDueDateSoon())
-                o.update();
+                o.update(title);
         }
     }
 

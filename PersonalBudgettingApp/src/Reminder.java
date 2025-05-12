@@ -1,29 +1,31 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.LocalDateTime;
 
 
 public class Reminder {
-    String title;
-    LocalDate date;
-    LocalTime time;
-    public LocalDateTime datetime;
+    private final String title;
+    private final LocalDate date;
+    private final LocalTime time;
 
-    Reminder(LocalDate date, LocalTime time) {
-        this.date = date;
-        this.time = time;
-        datetime = LocalDateTime.of(date, time);
-    }
+    Reminder(String title) {
+        this.title = title;
+        date = LocalDate.now();
+        time = LocalTime.now();
 
-    public void sendReminder() {
         System.out.println("\nREMINDER");
         System.out.println("------------");
         System.out.println(title);
     }
 
-    public void display() {
-        System.out.println(title);
-        System.out.println(date);
-        System.out.println(time);
+    public String getTitle() {
+        return title;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public LocalTime getTime() {
+        return time;
     }
 }
