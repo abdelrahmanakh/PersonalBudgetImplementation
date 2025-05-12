@@ -7,15 +7,26 @@ public class Dashboard {
     }
     public void displayDashboard() {
         System.out.println("========================");
-        System.out.println("Income:");
+        float totalIncome = 0;
         for(Income income: user.getIncomeSources()){
-            incomeView.displayIncome(income);
-            System.out.println();
+            totalIncome += income.getAmount();
         }
+        System.out.println("Total Income: " + totalIncome);
+        if(user.getIncomeSources().isEmpty()){
+            System.out.println("No Income sources have been added.");
+        } else{
+            System.out.println("Latest Income source have been added:");
+            Income lastIncome = user.getIncomeSources().getLast();
+            incomeView.displayIncome(lastIncome);
+        }
+
         System.out.println("========================");
-        for(Budget budget: user.getBudgets()){
-            budgetView.displayBudget(budget);
-            System.out.println();
+        if(user.getBudgets().isEmpty()){
+            System.out.println("No Budgets have been added.");
+        } else{
+            System.out.println("Latest Budget have been added:");
+            Budget lastBudget = user.getBudgets().getLast();
+            budgetView.displayBudget(lastBudget);
         }
         System.out.println("========================");
     }
