@@ -21,7 +21,9 @@ public class OTP {
         code = otp.toString();
         System.out.println("Hint! " + code);
     }
-
+    public String getCode() {
+        return code;
+    }
     /**
      * Validates an OTP input against the previously generated code.
      * Prompts the user to enter the OTP sent to their phone number.
