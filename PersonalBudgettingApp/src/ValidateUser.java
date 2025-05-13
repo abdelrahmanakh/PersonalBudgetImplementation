@@ -12,9 +12,9 @@ public class ValidateUser {
     /** OTP generator and validator for phone number verification */
     private final OTP otp = new OTP();
     /** The credentials for Twilio API*/
-    public static final String ACCOUNT_SID = "";
-    public static final String AUTH_TOKEN = "";
-    public static final String FROM_PHONE = "";
+//    public static final String ACCOUNT_SID = "";
+//    public static final String AUTH_TOKEN = "";
+//    public static final String FROM_PHONE = "";
     /**
      * Validates an email address for proper format and uniqueness in the system.
      *
@@ -47,12 +47,12 @@ public class ValidateUser {
         if (!Main.userController.isRegisteredPhoneNumber(phoneNumber))
             return false;
         otp.generate();
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
-        Message.creator(
-                new com.twilio.type.PhoneNumber(phoneNumber),
-                new com.twilio.type.PhoneNumber(FROM_PHONE),
-                "Your OTP is: " + otp.getCode()
-        ).create();
+//        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+//        Message.creator(
+//                new com.twilio.type.PhoneNumber(phoneNumber),
+//                new com.twilio.type.PhoneNumber(FROM_PHONE),
+//                "Your OTP is: " + otp.getCode()
+//        ).create();
 
         System.out.print("Enter the OTP sent to your phone number without any white spaces between digits: ");
         Scanner scanner = new Scanner(System.in);
