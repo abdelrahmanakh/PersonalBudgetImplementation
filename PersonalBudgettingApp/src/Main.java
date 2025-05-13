@@ -175,8 +175,6 @@ public class Main {
     public static void saveData(UserController usersToSave) throws Exception {
         try (FileOutputStream fos = new FileOutputStream(FILENAME);
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-
-            // Serialize the entire list object to the file
             oos.writeObject(usersToSave);
         }
     }
