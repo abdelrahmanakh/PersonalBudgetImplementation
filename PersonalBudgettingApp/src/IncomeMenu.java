@@ -1,11 +1,38 @@
 import java.util.Scanner;
+
+/**
+ * The {@code IncomeMenu} class provides a console-based menu interface
+ * for managing the income sources of a specific user.
+ * <p>
+ * It allows users to:
+ * <ul>
+ *     <li>View all income sources</li>
+ *     <li>Add new income sources</li>
+ *     <li>Delete existing income sources</li>
+ *     <li>Update existing income entries (title, amount, source, recurrence)</li>
+ * </ul>
+ *
+ * This class relies on the MVC components {@code Income}, {@code IncomeController}, and {@code IncomeView}.
+ * It uses a {@code Scanner} to capture user input and performs actions accordingly.
+ */
 public class IncomeMenu {
     private User currentUser;
     private Scanner scanner = new Scanner(System.in);
+    /**
+     * Constructs a new {@code IncomeMenu} for the given user.
+     * @param user The user whose income sources will be managed.
+     */
     IncomeMenu(User user) {
         this.currentUser = user;
     }
 
+    /**
+     * Displays the income management menu and handles user input.
+     * <p>
+     * The method loops until the user chooses to return.
+     * It allows adding, deleting, and updating incomes, and displays the current list of incomes.
+     * Changes are applied directly to the current user's income list.
+     */
     public void showIncomeMenu() {
         while (true) {
             IncomeView incomeView = new IncomeView();

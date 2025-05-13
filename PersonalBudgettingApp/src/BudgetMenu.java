@@ -4,15 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The {@code BudgetMenu} class handles user interactions related to managing budgets.
+ * It allows the user to add, delete, and update budgets through a command-line interface.
+ * The class also interacts with a {@code ReminderController} to set up reminders
+ * for budget due dates.
+ */
 public class BudgetMenu {
     private User currentUser;
     private Scanner scanner = new Scanner(System.in);
     private ReminderController reminderController;
+    /**
+     * Constructs a new {@code BudgetMenu} for the given user and reminder controller.
+     * @param user               the current user interacting with the budget menu
+     * @param reminderController the controller responsible for handling reminders
+     */
     BudgetMenu(User user,  ReminderController reminderController) {
         this.currentUser = user;
         this.reminderController = reminderController;
     }
 
+    /**
+     * Displays the budget menu and handles user input for adding,
+     * deleting, and updating budgets.
+     *
+     * <p>This method runs in a loop until the user chooses to return.</p>
+     *
+     * <p>Operations include:</p>
+     * <ul>
+     *   <li>Adding a new budget with title, amount, due date, and period</li>
+     *   <li>Deleting an existing budget by ID</li>
+     *   <li>Updating attributes of an existing budget</li>
+     * </ul>
+     */
     public void showBudgetMenu() {
         while (true) {
             BudgetView budgetView = new BudgetView();
@@ -94,6 +118,10 @@ public class BudgetMenu {
             }
         }
     }
+    /**
+     * Prompts the user to enter a date (year, month, day) and returns it as a list of integers.
+     * @return a list containing year, month, and day as integers
+     */
     public List<Integer> dueDateAndPeriodMenu (){
         List<Integer> dueDateAndPeriod =  new ArrayList<>();
         System.out.println("Enter Year: ");
