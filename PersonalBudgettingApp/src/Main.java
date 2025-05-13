@@ -10,7 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the User Management System!");
         System.out.println("Choose from the following:");
-        System.out.println("1: Sign-in");
+        System.out.println("1: Sign-up");
         System.out.println("2: Login");
         int choice;
         choice = scanner.nextInt();
@@ -26,7 +26,10 @@ public class Main {
                 String password = scanner.next();
 
                 SignUpRequest signUpRequest = new SignUpRequest(username, email, password, phoneNumber);
-                if (signUpRequest.isValidRequest()) break;
+                if (signUpRequest.isValidRequest()) {
+                    userController.createUser(signUpRequest);
+                    break;
+                }
             }
         }
         while (true) {
@@ -42,15 +45,16 @@ public class Main {
             }
             System.out.println("Invalid email or password. Please try again.");
         }
-        if(currentUser!=null){
+        if (currentUser != null) {
             Dashboard dashboard = new Dashboard(currentUser);
             dashboard.displayDashboard();
-            while(true){
+            while (true) {
                 System.out.println("Where do you want to go?");
                 System.out.println("1: Income");
                 System.out.println("2: Expense");
                 System.out.println("3: Budgets");
-                System.out.println("4: Exit");
+                System.out.println("4: Delete account");
+                System.out.println("5: Exit");
                 int dashboardChoice = scanner.nextInt();
                 if (dashboardChoice == 1) {
                     while (true) {
@@ -63,7 +67,7 @@ public class Main {
                         System.out.println("2: Delete Income");
                         System.out.println("3: Update Income");
                         System.out.println("4: Return");
-                        int  incomeChoice = scanner.nextInt();
+                        int incomeChoice = scanner.nextInt();
                         if (incomeChoice == 1) {
                             int lastIndex = incomeController.getEntities().size();
                             System.out.println("Enter Amount to add: ");
@@ -110,19 +114,19 @@ public class Main {
                                     } else {
                                         incomeToBeUpdated.makeRecurring();
                                     }
-                                } else if(incomeUpdatingChoice == 5){
+                                } else if (incomeUpdatingChoice == 5) {
                                     break;
                                 } else {
                                     System.out.println("Invalid Input!");
                                 }
                             }
-                        }  else if (incomeChoice == 4) {
+                        } else if (incomeChoice == 4) {
                             break;
                         } else {
                             System.out.println("Invalid Input!");
                         }
                     }
-                } else if (dashboardChoice == 3){
+                } else if (dashboardChoice == 3) {
                     while (true) {
                         BudgetView budgetView = new BudgetView();
                         BudgetController budgetController = new BudgetController(currentUser.getBudgets(), budgetView);
@@ -147,7 +151,7 @@ public class Main {
                             int budgetDueDateMonth = scanner.nextInt();
                             System.out.println("Enter Day: ");
                             int budgetDueDateDay = scanner.nextInt();
-                            LocalDate budgetDueDate =  LocalDate.of(budgetDueDateYear, budgetDueDateMonth, budgetDueDateDay);
+                            LocalDate budgetDueDate = LocalDate.of(budgetDueDateYear, budgetDueDateMonth, budgetDueDateDay);
                             System.out.println("Enter Budget Period: ");
                             System.out.println("Enter Year: ");
                             int budgetPeriodYear = scanner.nextInt();
@@ -174,14 +178,14 @@ public class Main {
                                 System.out.println("4: To change Budget Period");
                                 System.out.println("5: To deposit");
                                 System.out.println("6: To Return");
-                                int  budgetUpdatingChoice = scanner.nextInt();
+                                int budgetUpdatingChoice = scanner.nextInt();
                                 if (budgetUpdatingChoice == 1) {
                                     System.out.println("Enter new Budget Amount: ");
                                     budgetToBeUpdated.setTotalAmount(scanner.nextFloat());
                                 } else if (budgetUpdatingChoice == 2) {
                                     System.out.println("Enter new Budget Title/Category: ");
                                     budgetToBeUpdated.setTitle(scanner.next());
-                                }  else if (budgetUpdatingChoice == 3) {
+                                } else if (budgetUpdatingChoice == 3) {
                                     System.out.println("Enter new Budget Due Date: ");
                                     System.out.println("Enter Year: ");
                                     int budgetDueDateYear = scanner.nextInt();
@@ -191,7 +195,7 @@ public class Main {
                                     int budgetDueDateDay = scanner.nextInt();
                                     LocalDate budgetDueDate = LocalDate.of(budgetDueDateYear, budgetDueDateMonth, budgetDueDateDay);
                                     budgetToBeUpdated.setDueDate(budgetDueDate);
-                                } else  if (budgetUpdatingChoice == 4) {
+                                } else if (budgetUpdatingChoice == 4) {
                                     System.out.println("Enter new Budget Period: ");
                                     System.out.println("Enter Year: ");
                                     int budgetPeriodYear = scanner.nextInt();
@@ -216,7 +220,10 @@ public class Main {
                             System.out.println("Invalid Input!");
                         }
                     }
-                } else if (dashboardChoice == 4){
+                } else if (dashboardChoice == 4) {
+                    userController.deleteUser(currentUser);
+                    break;
+                } else if (dashboardChoice == 5) {
                     break;
                 } else {
                     System.out.println("Invalid Input!");
