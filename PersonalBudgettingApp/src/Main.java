@@ -6,6 +6,8 @@ public class Main {
     public static UserController userController = new UserController();
     public static User currentUser;
 
+    public static ReminderController reminderController = new ReminderController();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the User Management System!");
@@ -56,8 +58,9 @@ public class Main {
                 System.out.println("1: Income");
                 System.out.println("2: Expense");
                 System.out.println("3: Budgets");
-                System.out.println("4: Delete account");
-                System.out.println("5: Exit");
+                System.out.println("4: Reminders");
+                System.out.println("5: Delete account");
+                System.out.println("6: Exit");
                 int dashboardChoice = scanner.nextInt();
                 if (dashboardChoice == 1) {
                     while (true) {
@@ -129,6 +132,76 @@ public class Main {
                             System.out.println("Invalid Input!");
                         }
                     }
+                } else if (dashboardChoice == 2) {
+                    while (true) {
+                        ExpenseView expenseView = new ExpenseView();
+                        ExpenseController expenseController = new ExpenseController(currentUser.getExpenseRecipients(), expenseView);
+                        System.out.println();
+                        System.out.println("Expense Recipients:");
+                        expenseController.displayAllEntities();
+                        System.out.println("1: Add new Expense");
+                        System.out.println("2: Delete Expense");
+                        System.out.println("3: Update Expense");
+                        System.out.println("4: Return");
+                        int expenseChoice = scanner.nextInt();
+                        if (expenseChoice == 1) {
+                            int lastIndex = expenseController.getEntities().size();
+                            System.out.println("Enter Amount to add: ");
+                            float expenseAmount = scanner.nextFloat();
+                            System.out.println("Enter Expense title: ");
+                            String expenseTitle = scanner.next();
+                            System.out.println("Enter Expense Recipients: ");
+                            String expenseSource = scanner.next();
+                            System.out.println("1: if the expense is recurring");
+                            System.out.println("2: if the expense is not recurring");
+                            int expenseRecurringChoice = scanner.nextInt();
+                            boolean isExpenseRecurring;
+                            isExpenseRecurring = expenseRecurringChoice == 1;
+                            Expense newExpense = new Expense(lastIndex, expenseAmount, expenseTitle, expenseSource, isExpenseRecurring);
+                            expenseController.addEntity(newExpense);
+                        } else if (expenseChoice == 2) {
+                            System.out.println("Enter Expense ID to be deleted: ");
+                            int expenseID = scanner.nextInt();
+                            expenseController.removeEntity(expenseID);
+                        } else if (expenseChoice == 3) {
+                            System.out.println("Enter expense ID to be updated: ");
+                            int expenseID = scanner.nextInt();
+                            Expense expenseToBeUpdated = expenseController.getEntities().get(expenseID);
+                            while (true) {
+                                expenseController.displayEntity(expenseToBeUpdated);
+                                System.out.println("1: To change Expense Title");
+                                System.out.println("2: To change Expense Source");
+                                System.out.println("3: To change Expense Amount");
+                                System.out.println("4: To change Expense Recurring State");
+                                System.out.println("5: To Return");
+                                int expenseUpdatingChoice = scanner.nextInt();
+                                if (expenseUpdatingChoice == 1) {
+                                    System.out.println("Enter new Title: ");
+                                    expenseToBeUpdated.changeTitle(scanner.next());
+                                } else if (expenseUpdatingChoice == 2) {
+                                    System.out.println("Enter new Recipient: ");
+                                    expenseToBeUpdated.updateRecipient(scanner.next());
+                                } else if (expenseUpdatingChoice == 3) {
+                                    System.out.println("Enter new Amount: ");
+                                    expenseToBeUpdated.updateAmount(scanner.nextFloat());
+                                } else if (expenseUpdatingChoice == 4) {
+                                    if (expenseToBeUpdated.isRecurring()) {
+                                        expenseToBeUpdated.cancelRecurring();
+                                    } else {
+                                        expenseToBeUpdated.makeRecurring();
+                                    }
+                                } else if (expenseUpdatingChoice == 5) {
+                                    break;
+                                } else {
+                                    System.out.println("Invalid Input!");
+                                }
+                            }
+                        } else if (expenseChoice == 4) {
+                            break;
+                        } else {
+                            System.out.println("Invalid Input!");
+                        }
+                    }
                 } else if (dashboardChoice == 3) {
                     while (true) {
                         BudgetView budgetView = new BudgetView();
@@ -164,6 +237,7 @@ public class Main {
                             int budgetPeriodDay = scanner.nextInt();
                             Period budgetPeriod = Period.of(budgetPeriodYear, budgetPeriodMonth, budgetPeriodDay);
                             Budget newBudget = new Budget(lastIndex, budgetTitle, budgetTotalAmount, budgetDueDate, budgetPeriod);
+                            newBudget.addObserver(reminderController);
                             budgetController.addEntity(newBudget);
                         } else if (budgetChoice == 2) {
                             System.out.println("Enter Budget ID to be deleted: ");
@@ -224,9 +298,12 @@ public class Main {
                         }
                     }
                 } else if (dashboardChoice == 4) {
+                    ReminderView reminderView = new ReminderView();
+                    reminderView.displayReminder(reminderController);
+                } else if (dashboardChoice == 5) {
                     userController.deleteUser(currentUser);
                     break;
-                } else if (dashboardChoice == 5) {
+                } else if (dashboardChoice == 6) {
                     break;
                 } else {
                     System.out.println("Invalid Input!");

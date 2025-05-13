@@ -6,12 +6,19 @@ public class ReminderView {
      */
     public void displayReminder(Reminder reminder) {
         System.out.println("Reminder title: " + reminder.getTitle());
-        System.out.println("Remaining Date: " + reminder.getDate());
-        System.out.println("Remaining Time: " + reminder.getTime());
+        System.out.println("Reminder Date: " + reminder.getDate());
+        System.out.println("Reminder Time: " + reminder.getTime());
+        System.out.println();
     }
 
     public void displayReminder(ReminderController RC, int index) {
         Reminder reminder = RC.getReminder(index);
         displayReminder(reminder);
+    }
+
+    public void displayReminder(ReminderController RC) {
+        for (Reminder reminder : RC.getReminders()) {
+            displayReminder(reminder);
+        }
     }
 }

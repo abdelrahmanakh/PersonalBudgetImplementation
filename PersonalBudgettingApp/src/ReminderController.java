@@ -22,6 +22,10 @@ public class ReminderController implements Observer {
         return reminders.get(idx);
     }
 
+    public List<Reminder> getReminders() {
+        return reminders;
+    }
+
     public void sendReminder(Reminder reminder) {
         addReminder(reminder);
     }
