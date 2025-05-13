@@ -1,8 +1,10 @@
+import java.io.Serializable;
+
 /**
  * Represents an income entry in the financial system, extending the FinancialEntry class.
  * Contains details about the income id, source, amount, title, and whether it's recurring.
  */
-public class Income extends FinancialEntry{
+public class Income extends FinancialEntry implements Serializable {
     private String source;
 
     /**

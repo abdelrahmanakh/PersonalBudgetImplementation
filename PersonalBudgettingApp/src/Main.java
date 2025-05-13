@@ -56,11 +56,7 @@ public class Main {
         if (currentUser != null) {
             Dashboard dashboard = new Dashboard(currentUser);
             while (true) {
-                for (Income income: currentUser.getIncomeSources()){
-                    System.out.println(income.getId());
-                }
                 saveData(userController);
-                userController = loadData();
                 dashboard.displayDashboard();
                 System.out.println("Where do you want to go?");
                 System.out.println("1: Income");
