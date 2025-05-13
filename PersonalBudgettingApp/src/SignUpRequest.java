@@ -16,7 +16,7 @@ public class SignUpRequest {
     private final String phoneNumber;
 
     /** Validator used to check the validity of registration fields */
-    private ValidateUser validateUser;
+    private final ValidateUser validateUser = new ValidateUser();
 
     /**
      * Creates a new sign-up request with the provided registration information.

@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -7,7 +8,7 @@ import java.util.regex.Matcher;
  */
 public class ValidateUser {
     /** OTP generator and validator for phone number verification */
-    private OTP otp;
+    private final OTP otp = new OTP();
 
     /**
      * Validates an email address for proper format and uniqueness in the system.
@@ -41,7 +42,9 @@ public class ValidateUser {
         if (!Main.userController.isRegisteredPhoneNumber(phoneNumber))
             return false;
         otp.generate();
-        String code = "";
+        System.out.print("Enter the OTP sent to your phone number without any white spaces between digits: ");
+        Scanner scanner = new Scanner(System.in);
+        String code = scanner.nextLine();
         return otp.validateOTP(code);
     }
 

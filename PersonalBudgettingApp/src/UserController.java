@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 public class UserController {
     /** List of all registered users in the system */
-    public ArrayList<User> users;
+    public ArrayList<User> users = new ArrayList<>();
 
     /**
      * Creates a new user from a sign-up request and adds them to the system.

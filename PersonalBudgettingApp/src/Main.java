@@ -16,6 +16,7 @@ public class Main {
         choice = scanner.nextInt();
         if (choice == 1) {
             while (true) {
+                System.out.println("**Sign-up menu**");
                 System.out.print("Enter username: ");
                 String username = scanner.next();
                 System.out.print("Enter email: ");
@@ -33,6 +34,7 @@ public class Main {
             }
         }
         while (true) {
+            System.out.println("**Login menu**");
             System.out.print("Enter email: ");
             String email = scanner.next();
             System.out.print("Enter password: ");
@@ -41,6 +43,7 @@ public class Main {
             int ID = userController.login(email, password);
             if (ID != -1) {
                 currentUser = userController.users.get(ID);
+                System.out.println("Login successful!");
                 break;
             }
             System.out.println("Invalid email or password. Please try again.");
