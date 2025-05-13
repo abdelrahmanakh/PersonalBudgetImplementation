@@ -8,11 +8,11 @@ public class Dashboard {
     /** The user whose financial data is being displayed. */
     User user;
     /** View component for displaying income information. */
-    IncomeView incomeView;
+    IncomeView incomeView = new IncomeView();
     /** View component for displaying expense information. */
-    ExpenseView expenseView;
+    ExpenseView expenseView = new ExpenseView();
     /** View component for displaying budget information. */
-    BudgetView budgetView;
+    BudgetView budgetView  = new BudgetView();
 
     /**
      * Constructs a {@code Dashboard} for the given user.

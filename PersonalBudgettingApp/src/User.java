@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +6,7 @@ import java.util.List;
  * Represents a user in the system with personal information, authentication details,
  * account status, and associated financial data.
  */
-public class User {
+public class User implements Serializable {
     /**
      * Unique identifier for the user
      */

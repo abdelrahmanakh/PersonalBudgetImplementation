@@ -1,3 +1,4 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -5,7 +6,7 @@ import java.util.Objects;
  * Controls user-related operations including creation, validation, authentication, and account management.
  * Maintains a collection of all registered users in the system.
  */
-public class UserController {
+public class UserController implements Serializable {
     /** List of all registered users in the system */
     public ArrayList<User> users = new ArrayList<>();
 

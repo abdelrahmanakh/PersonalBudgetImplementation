@@ -10,9 +10,7 @@ public class BudgetView{
      */
     public void displayBudget (Budget budget){
         System.out.println("Budget title: "+ budget.getTitle());
-        System.out.printf("Remaining Budget: %.2f from total budget %.2f%n",
-                (budget.getTotalAmount() - budget.getPaidAmount()),
-                budget.getTotalAmount());
+        System.out.println("Remaining Budget: " + (budget.getTotalAmount() - budget.getPaidAmount()) + " from total budget " + budget.getTotalAmount());
         System.out.println("Due date: "+ budget.getDueDate());
     }
 }
