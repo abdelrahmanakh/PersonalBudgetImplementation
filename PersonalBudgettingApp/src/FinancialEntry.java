@@ -1,9 +1,10 @@
 import java.time.LocalDate;
+import java.io.Serializable;
 
 /**
  * Represents a financial entry with an id, amount, title, recurrence status, and date.
  */
-public class FinancialEntry {
+public class FinancialEntry implements Serializable {
     private final int id;
     private float amount;
     private String title;

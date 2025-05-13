@@ -16,7 +16,7 @@ public class Dashboard {
             System.out.println("No Income sources have been added.");
         } else{
             System.out.println("Latest Income source have been added:");
-            Income lastIncome = user.getIncomeSources().getLast();
+            Income lastIncome = user.getIncomeSources().get(user.getIncomeSources().size()-1);
             incomeView.displayIncome(lastIncome);
         }
 
@@ -25,7 +25,7 @@ public class Dashboard {
             System.out.println("No Budgets have been added.");
         } else{
             System.out.println("Latest Budget have been added:");
-            Budget lastBudget = user.getBudgets().getLast();
+            Budget lastBudget = user.getBudgets().get(user.getBudgets().size()-1);
             budgetView.displayBudget(lastBudget);
         }
         System.out.println("========================");

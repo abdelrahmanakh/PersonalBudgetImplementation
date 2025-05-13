@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 
-public class Reminder {
+public class Reminder implements Serializable {
     private final String title;
     private final LocalDate date;
     private final LocalTime time;

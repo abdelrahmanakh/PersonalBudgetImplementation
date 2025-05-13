@@ -2,12 +2,12 @@ import java.time.Period;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.io.Serializable;
 /**
  * Represents a financial plan with an id, due date, period, total and paid amounts, and recurrence options.
  * Implements the Subject part of the Observer design pattern.
  */
-public class FinancialPlan implements Subject {
+public class FinancialPlan implements Subject, Serializable {
     private List<Observer> observers = new ArrayList<>();
     private final int id;
     private float totalAmount, paidAmount;
