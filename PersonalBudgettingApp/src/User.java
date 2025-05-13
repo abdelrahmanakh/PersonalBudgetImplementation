@@ -6,38 +6,61 @@ import java.util.List;
  * account status, and associated financial data.
  */
 public class User {
-    /** Unique identifier for the user */
+    /**
+     * Unique identifier for the user
+     */
     private final int UserID;
 
-    /** Tracks the number of consecutive failed login attempts */
+    /**
+     * Tracks the number of consecutive failed login attempts
+     */
     private int failedAttempts;
 
-    /** Indicates whether the user account is locked due to security reasons */
+    /**
+     * Indicates whether the user account is locked due to security reasons
+     */
     private boolean isLocked;
 
-    /** The user's email address used for login and communication */
+    /**
+     * The user's email address used for login and communication
+     */
     private final String email;
 
-    /** The user's phone number for verification and communication */
+    /**
+     * The user's phone number for verification and communication
+     */
     private final String phoneNumber;
 
-    /** The user's chosen username */
+    /**
+     * The user's chosen username
+     */
     private final String username;
 
-    /** The user's password for authentication */
+    /**
+     * The user's password for authentication
+     */
     private final String password;
 
-    /** Collection of income sources associated with this user */
+    /**
+     * Collection of income sources associated with this user
+     */
     private final List<Income> incomeSources;
 
-    /** Collection of budgets created by this user */
+    /**
+     * Collection of expense recipients associated with this user
+     */
+    private final List<Expense> expenseRecipients;
+
+    /**
+     * Collection of budgets created by this user
+     */
     private final List<Budget> budgets;
 
     /**
      * Creates a new user from a sign-up request.
      *
      * @param request The sign-up request containing user information
-     * @param ID The unique identifier to assign to this user
+     * @param ID      The unique identifier to assign to this user
      */
     public User(SignUpRequest request, int ID) {
         username = request.getUsername();
@@ -48,6 +71,7 @@ public class User {
         UserID = ID;
         isLocked = false;
         this.incomeSources = new ArrayList<>();
+        this.expenseRecipients = new ArrayList<>();
         this.budgets = new ArrayList<>();
     }
 
@@ -152,6 +176,14 @@ public class User {
      */
     public List<Income> getIncomeSources() {
         return incomeSources;
+    }
+
+    /**
+     * Gets the list of expense recipients associated with the user.
+     * @return the list of expense recipients
+     */
+    public List<Expense> getExpenseRecipients() {
+        return expenseRecipients;
     }
 
     /**
