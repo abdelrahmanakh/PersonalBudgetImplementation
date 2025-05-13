@@ -153,7 +153,7 @@ public class Main {
                             System.out.println("Enter the index to delete (0-indexed)");
                             int index = scanner.nextInt();
                             reminderController.deleteReminder(index);
-                        } else if (choice == 2) {
+                        } else if (deleteChoice == 2) {
                             break;
                         } else {
                             System.err.println("Invalid Choice");

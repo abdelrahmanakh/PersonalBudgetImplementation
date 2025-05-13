@@ -1,9 +1,11 @@
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ReminderController implements Observer {
+public class ReminderController implements Observer, Serializable {
 
 
-    private List<Reminder> reminders;
+    private List<Reminder> reminders = new ArrayList<Reminder>();
 
 
     public void addReminder(Reminder reminder) {
