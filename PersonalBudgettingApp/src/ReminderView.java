@@ -1,3 +1,5 @@
+import java.time.format.DateTimeFormatter;
+
 public class ReminderView {
     /**
      * Displays the details of a given Reminder, including title, date, and time
@@ -7,7 +9,7 @@ public class ReminderView {
     public void displayReminder(Reminder reminder) {
         System.out.println("Reminder title: " + reminder.getTitle());
         System.out.println("Reminder Date: " + reminder.getDate());
-        System.out.println("Reminder Time: " + reminder.getTime());
+        System.out.println("Reminder Time: " + reminder.getTime().format(DateTimeFormatter.ofPattern("HH:mm")));
         System.out.println();
     }
 

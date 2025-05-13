@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
+
 /**
  * Represents a financial plan with an id, due date, period, total and paid amounts, and recurrence options.
  * Implements the Subject part of the Observer design pattern.
@@ -18,11 +19,12 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Constructs a new FinancialPlan.
-     * @param id           Unique identifier of the plan.
-     * @param title        Title of the financial plan.
-     * @param totalAmount  Total amount planned.
-     * @param dueDate      Due date for the plan.
-     * @param period       Period for the recurrence option
+     *
+     * @param id          Unique identifier of the plan.
+     * @param title       Title of the financial plan.
+     * @param totalAmount Total amount planned.
+     * @param dueDate     Due date for the plan.
+     * @param period      Period for the recurrence option
      */
     public FinancialPlan(int id, String title, float totalAmount, LocalDate dueDate, Period period) {
         this.id = id;
@@ -30,7 +32,7 @@ public class FinancialPlan implements Subject, Serializable {
         this.totalAmount = totalAmount;
         this.paidAmount = 0;
         this.dueDate = dueDate;
-        this.period =period;
+        this.period = period;
         this.isRecurring = true;
     }
 
@@ -38,6 +40,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Adds an observer to the list.
+     *
      * @param o The observer to add.
      */
     public void addObserver(Observer o) {
@@ -46,6 +49,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Removes an observer from the list.
+     *
      * @param o The observer to remove.
      */
     public void removeObserver(Observer o) {
@@ -56,9 +60,10 @@ public class FinancialPlan implements Subject, Serializable {
      * Notifies all observers if the due date is soon.
      */
     public void notifyObservers() {
-        for (Observer o : observers) {
-            if (isDueDateSoon())
+        if (isDueDateSoon()) {
+            for (Observer o : observers) {
                 o.update(title);
+            }
         }
     }
 
@@ -66,6 +71,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Checks whether the due date is within 7 days from today.
+     *
      * @return True if due date is within 7 days, false otherwise.
      */
     public boolean isDueDateSoon() {
@@ -76,6 +82,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Checks whether the paid amount is at least 70%.
+     *
      * @return True if paid amount is 70% or greater of the total amount, false otherwise.
      */
     public boolean isPaidAboveThreshold() {
@@ -99,6 +106,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Sets the title of the plan.*
+     *
      * @param title New title.
      */
     public void setTitle(String title) {
@@ -114,6 +122,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Sets the total amount of the plan.
+     *
      * @param totalAmount New total amount.
      */
     public void setTotalAmount(float totalAmount) {
@@ -129,6 +138,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Deposits to the paid amount of the plan.
+     *
      * @param depositedAmount the amount to be deposited.
      */
     public void depositAmount(float depositedAmount) {
@@ -137,6 +147,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Withdraw from the paid amount of the plan
+     *
      * @param withdrawnAmount the amount to be withdrawn from the plan.
      */
     public void withdrawAmount(float withdrawnAmount) {
@@ -173,6 +184,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Sets the due date of the plan.
+     *
      * @param dueDate New due date.
      */
     public void setDueDate(LocalDate dueDate) {
@@ -188,6 +200,7 @@ public class FinancialPlan implements Subject, Serializable {
 
     /**
      * Sets the period between due date and current date.
+     *
      * @param period New period.
      */
     public void setPeriod(Period period) {

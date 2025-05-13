@@ -7,6 +7,9 @@ public class ReminderController implements Observer, Serializable {
 
     private List<Reminder> reminders = new ArrayList<Reminder>();
 
+    ReminderController(List<Reminder> reminders) {
+        this.reminders = reminders;
+    }
 
     public void addReminder(Reminder reminder) {
         reminders.add(reminder);

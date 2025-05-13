@@ -57,6 +57,12 @@ public class User implements Serializable {
      */
     private final List<Budget> budgets;
 
+
+    /**
+     * Collection of reminders created by this user
+     */
+    private final List<Reminder> reminders;
+
     /**
      * Creates a new user from a sign-up request.
      *
@@ -74,6 +80,7 @@ public class User implements Serializable {
         this.incomeSources = new ArrayList<>();
         this.expenseRecipients = new ArrayList<>();
         this.budgets = new ArrayList<>();
+        this.reminders = new ArrayList<>();
     }
 
     /**
@@ -181,6 +188,7 @@ public class User implements Serializable {
 
     /**
      * Gets the list of expense recipients associated with the user.
+     *
      * @return the list of expense recipients
      */
     public List<Expense> getExpenseRecipients() {
@@ -194,6 +202,16 @@ public class User implements Serializable {
      */
     public List<Budget> getBudgets() {
         return budgets;
+    }
+
+
+    /**
+     * Gets the list of reminders associated with the user.
+     *
+     * @return The list of budgets
+     */
+    public List<Reminder> getReminders() {
+        return reminders;
     }
 
 }

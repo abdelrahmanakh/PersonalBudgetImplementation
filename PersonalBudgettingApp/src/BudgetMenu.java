@@ -19,7 +19,8 @@ public class BudgetMenu {
      * @param user               the current user interacting with the budget menu
      * @param reminderController the controller responsible for handling reminders
      */
-    BudgetMenu(User user,  ReminderController reminderController) {
+
+    BudgetMenu(User user, ReminderController reminderController) {
         this.currentUser = user;
         this.reminderController = reminderController;
     }
@@ -64,6 +65,7 @@ public class BudgetMenu {
                 Budget newBudget = new Budget(lastIndex, budgetTitle, budgetTotalAmount, budgetDueDate, budgetPeriod);
                 newBudget.addObserver(reminderController);
                 budgetController.addEntity(newBudget);
+                newBudget.notifyObservers();
             } else if (budgetChoice == 2) {
                 System.out.println("Enter Budget ID to be deleted: ");
                 int budgetID = scanner.nextInt();
@@ -122,8 +124,9 @@ public class BudgetMenu {
      * Prompts the user to enter a date (year, month, day) and returns it as a list of integers.
      * @return a list containing year, month, and day as integers
      */
-    public List<Integer> dueDateAndPeriodMenu (){
-        List<Integer> dueDateAndPeriod =  new ArrayList<>();
+
+    public List<Integer> dueDateAndPeriodMenu() {
+        List<Integer> dueDateAndPeriod = new ArrayList<>();
         System.out.println("Enter Year: ");
         int budgetDueDateYear = scanner.nextInt();
         System.out.println("Enter Month: ");

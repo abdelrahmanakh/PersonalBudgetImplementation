@@ -6,7 +6,6 @@ public class Main {
     private static final String FILENAME = "users.ser";
     public static UserController userController = new UserController();
     public static User currentUser;
-    public static ReminderController reminderController = new ReminderController();
 
     public static void main(String[] args) throws Exception {
         userController = loadData();
@@ -55,6 +54,7 @@ public class Main {
         }
         if (currentUser != null) {
             Dashboard dashboard = new Dashboard(currentUser);
+            ReminderController reminderController = new ReminderController(currentUser.getReminders());
             while (true) {
                 saveData(userController);
                 dashboard.displayDashboard();
