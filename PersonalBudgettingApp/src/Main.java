@@ -299,7 +299,21 @@ public class Main {
                     }
                 } else if (dashboardChoice == 4) {
                     ReminderView reminderView = new ReminderView();
-                    reminderView.displayReminder(reminderController);
+                    while (true) {
+                        reminderView.displayReminder(reminderController);
+                        System.out.println("1. Delete a Reminder");
+                        System.out.println("2. Exit");
+                        int deleteChoice = scanner.nextInt();
+                        if (deleteChoice == 1) {
+                            System.out.println("Enter the index to delete (0-indexed)");
+                            int index = scanner.nextInt();
+                            reminderController.deleteReminder(index);
+                        } else if (choice == 2) {
+                            break;
+                        } else {
+                            System.err.println("Invalid Choice");
+                        }
+                    }
                 } else if (dashboardChoice == 5) {
                     userController.deleteUser(currentUser);
                     break;
